@@ -1,0 +1,138 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "ODEV_3.ipynb",
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "source": [
+        "\n",
+        "**Permütasyon** \n",
+        "\n",
+        "P(n,r) = n! / (n - r)!\n",
+        "\n",
+        "**Kombinasyon** \n",
+        "\n",
+        "C(n,r) = P(n,r) / r! = n! / ( r! * (n-r)! )\n",
+        "\n",
+        "**Olasılık** \n",
+        "\n",
+        "İstenen Durum Sayısı / Tüm Durumların Sayısı\n"
+      ],
+      "metadata": {
+        "id": "ylZEIN0zfSW6"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 7,
+      "metadata": {
+        "id": "EExXgYfUakbg"
+      },
+      "outputs": [],
+      "source": [
+        "def factorial(number):\n",
+        "    if number == 1:\n",
+        "        return 1\n",
+        "    else:\n",
+        "        return (number * factorial(number-1))\n",
+        "\n",
+        "def combination(number1, number2):\n",
+        "    if (number2 > number1):\n",
+        "        return \"Error\"\n",
+        "    elif (number2 == 0):\n",
+        "      return 1\n",
+        "    else:\n",
+        "        return factorial(number1) / (factorial(number1-number2) * factorial(number2))\n",
+        "\n",
+        "def permutation(number1, number2):\n",
+        "    if (number2 > number1):\n",
+        "        return \"Error\"\n",
+        "    else:\n",
+        "        return factorial(number1) / factorial(number1-number2)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**SORU-1:** Bir grupta 5 erkek ve 3 kız öğrenci vardır. buna göre, bu gruptan rastgele seçilecek 3 kişiden birinin kız, ikisinin erkek olma olasılığı kaçtır?\n"
+      ],
+      "metadata": {
+        "id": "aN9pMyFRarKr"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "combination(3,1) * combination(5,2) / combination(8,3)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "FleiSClSbc6X",
+        "outputId": "848adf0d-6141-4b71-f77b-6129a7e313e3"
+      },
+      "execution_count": 14,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "0.5357142857142857"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 14
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**SORU-2:** Kız ya da erkek çocuğu doğma olasılığı eşit olduğu varsayımı altında 5 çocuklu bir ailede en fazla iki erkek çocuk olma olasılığı nedir?"
+      ],
+      "metadata": {
+        "id": "V-oLIPkDbLgS"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "( combination(5,0) + combination(5,1) + combination(5,2) ) / 2**5"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Im-FjaBsdI-S",
+        "outputId": "e20e460b-1351-4505-de45-7c3ecf133ae3"
+      },
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "0.5"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 10
+        }
+      ]
+    }
+  ]
+}
